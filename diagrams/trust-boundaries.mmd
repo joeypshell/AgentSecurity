@@ -1,0 +1,15 @@
+flowchart LR
+    User[Developer] --> UI[VS Code or GitHub Copilot UI]
+    UI --> Model[Model provider]
+    UI --> Workspace[Workspace files]
+    UI --> Terminal[Terminal]
+    UI --> MCP[MCP servers]
+    UI --> Web[Web content]
+    Terminal --> Local[Local OS and credentials]
+    MCP --> GitHub[GitHub]
+    MCP --> Cloud[Cloud APIs]
+    MCP --> DB[Databases]
+    Workspace --> UI
+    Web --> UI
+    classDef danger fill:#ffe0e0,stroke:#aa0000,color:#000;
+    class Terminal,MCP,Cloud,DB,Local,Web danger;
