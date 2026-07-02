@@ -1,0 +1,13 @@
+flowchart TD
+    U[User goal] --> C[Collect context]
+    C --> P[Plan next step]
+    P --> T{Need a tool?}
+    T -- no --> R[Respond]
+    T -- yes --> A[Request or use tool]
+    A --> O[Observe result]
+    O --> V{Goal met?}
+    V -- no --> C
+    V -- yes --> R
+    O --> I{Untrusted content?}
+    I -- yes --> G[Apply guardrails]
+    G --> P
