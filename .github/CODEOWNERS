@@ -1,0 +1,10 @@
+# Review ownership for agent-security controls
+
+.github/agents/ @joeypshell
+.github/prompts/ @joeypshell
+.github/copilot-instructions.md @joeypshell
+.github/workflows/ @joeypshell
+.vscode/ @joeypshell
+SECURITY.md @joeypshell
+docs/ @joeypshell
+diagrams/ @joeypshell
