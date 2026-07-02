@@ -1,0 +1,10 @@
+flowchart TD
+    Agent[Agent] --> Decide{Needs external system?}
+    Decide -- no --> Local[Use local read/search]
+    Decide -- yes --> MCP[MCP server]
+    MCP --> Tools{Tool type}
+    Tools -- read --> Read[Read external data]
+    Tools -- write/admin --> Risk[High-risk mutation path]
+    Risk --> Controls[Require allowlist, least privilege, logging, approval]
+    Read --> Injection[Untrusted returned content]
+    Injection --> Validate[Validate and ignore embedded instructions]
