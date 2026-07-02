@@ -1,0 +1,33 @@
+{
+  // Require deliberate approval for terminal commands.
+  "chat.tools.terminal.enableAutoApprove": false,
+
+  // Prefer OS-level sandboxing for agent-run terminal commands.
+  // Use the setting appropriate for your OS and VS Code version.
+  "chat.agent.sandbox.enabled": "on",
+  "chat.agent.sandbox.enabledWindows": "on",
+
+  // Restrict network access for sandboxed commands and agent tools.
+  "chat.agent.networkFilter": true,
+  "chat.agent.allowedNetworkDomains": [
+    "github.com",
+    "api.github.com"
+  ],
+  "chat.agent.deniedNetworkDomains": [],
+
+  // Sensitive files should not be silently modified.
+  "chat.tools.edits.autoApprove": {
+    "**/.env": false,
+    "**/.env.*": false,
+    "**/*secret*": false,
+    "**/*credential*": false,
+    "**/*.pem": false,
+    "**/*.key": false,
+    "**/*.p12": false,
+    "**/*.pfx": false,
+    "**/.github/workflows/**": false,
+    "**/infra/**": false,
+    "**/terraform/**": false,
+    "**/k8s/**": false
+  }
+}
