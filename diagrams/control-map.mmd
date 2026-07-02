@@ -1,0 +1,26 @@
+flowchart TB
+    Risk[Agent risk] --> P[Prompt and instruction controls]
+    Risk --> T[Tool controls]
+    Risk --> R[Runtime controls]
+    Risk --> G[Repository controls]
+    Risk --> H[Human controls]
+
+    P --> P1[Custom instructions]
+    P --> P2[Prompt files]
+    P --> P3[Custom agent role]
+
+    T --> T1[Explicit tool list]
+    T --> T2[MCP allowlist]
+    T --> T3[Terminal approval]
+
+    R --> R1[Sandbox]
+    R --> R2[Network filter]
+    R --> R3[Devcontainer or VM]
+
+    G --> G1[CODEOWNERS]
+    G --> G2[Branch protection]
+    G --> G3[Required checks]
+
+    H --> H1[Plan review]
+    H --> H2[PR review]
+    H --> H3[Incident response]
