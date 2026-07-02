@@ -1,0 +1,10 @@
+flowchart LR
+    A[Ask] --> B[Plan]
+    B --> C{Human approval}
+    C -- yes --> D[Implement in branch or worktree]
+    D --> E[Tests and checks]
+    E --> F[Read-only security review]
+    F --> G{Human PR review}
+    G -- yes --> H[Protected merge]
+    C -- no --> B
+    G -- changes --> D
