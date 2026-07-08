@@ -1,8 +1,18 @@
 {
+  // Conservative local example for real repositories.
+  // Verify setting names and supported values against your current VS Code/Copilot release.
+  // For enterprise rollout, prefer managed policy over developer-editable workspace settings.
+
+  // Treat agent mode as a pilot capability, not a normal chat capability.
+  "chat.agent.enabled": false,
+
+  // Do not allow global tool auto-approval, Bypass Approvals, or Autopilot-style behavior by default.
+  "chat.tools.global.autoApprove": false,
+
   // Require deliberate approval for terminal commands.
   "chat.tools.terminal.enableAutoApprove": false,
 
-  // Prefer OS-level sandboxing for agent-run terminal commands.
+  // Prefer OS-level sandboxing for agent-run terminal commands where supported.
   // Use the setting appropriate for your OS and VS Code version.
   "chat.agent.sandbox.enabled": "on",
   "chat.agent.sandbox.enabledWindows": "on",
@@ -15,6 +25,18 @@
   ],
   "chat.agent.deniedNetworkDomains": [],
 
+  // Default MCP to off. Move to registry/allowlist only after formal MCP admission review.
+  "chat.mcp.access": "none",
+
+  // Disable extension-contributed tools unless the extension and tool surface have been reviewed.
+  "chat.extensionTools.enabled": false,
+
+  // Hooks can run local commands. Keep disabled unless there is a reviewed policy use case.
+  "chat.useHooks": false,
+
+  // Browser/fetch/web tools should be restricted because web content is an indirect prompt-injection source.
+  "chat.tools.browser.enabled": false,
+
   // Sensitive files should not be silently modified.
   "chat.tools.edits.autoApprove": {
     "**/.env": false,
@@ -26,8 +48,20 @@
     "**/*.p12": false,
     "**/*.pfx": false,
     "**/.github/workflows/**": false,
+    "**/.github/agents/**": false,
+    "**/.github/prompts/**": false,
+    "**/.github/copilot-instructions.md": false,
+    "**/AGENTS.md": false,
     "**/infra/**": false,
     "**/terraform/**": false,
-    "**/k8s/**": false
+    "**/k8s/**": false,
+    "**/charts/**": false,
+    "**/Dockerfile": false,
+    "**/compose*.yml": false,
+    "**/package-lock.json": false,
+    "**/pnpm-lock.yaml": false,
+    "**/yarn.lock": false,
+    "**/poetry.lock": false,
+    "**/requirements*.txt": false
   }
 }
