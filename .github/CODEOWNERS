@@ -4,7 +4,10 @@
 .github/prompts/ @joeypshell
 .github/copilot-instructions.md @joeypshell
 .github/workflows/ @joeypshell
+.github/ISSUE_TEMPLATE/ @joeypshell
+.github/pull_request_template.md @joeypshell
 .vscode/ @joeypshell
 SECURITY.md @joeypshell
 docs/ @joeypshell
 diagrams/ @joeypshell
+templates/ @joeypshell

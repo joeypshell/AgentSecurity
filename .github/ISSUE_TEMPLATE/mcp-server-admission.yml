@@ -1,0 +1,98 @@
+name: MCP Server Admission
+about: Request review for an MCP server before use with Copilot or agents
+title: "MCP admission: <server name>"
+labels: ["mcp", "security-review"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form before adding an MCP server to an approved registry, allowlist, custom agent, or pilot configuration.
+  - type: input
+    id: server-name
+    attributes:
+      label: Server name
+      description: Human-readable server name and package/image/URL.
+    validations:
+      required: true
+  - type: input
+    id: owner
+    attributes:
+      label: Server owner
+      description: Team and accountable person responsible for the server.
+    validations:
+      required: true
+  - type: textarea
+    id: purpose
+    attributes:
+      label: Business purpose
+      description: What workflow does this enable and why are lower-risk tools insufficient?
+    validations:
+      required: true
+  - type: dropdown
+    id: deployment-type
+    attributes:
+      label: Deployment type
+      options:
+        - Remote HTTP/SSE/streamable HTTP
+        - GitHub-hosted
+        - Internal remote service
+        - Local stdio
+        - Third-party hosted
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: tool-inventory
+    attributes:
+      label: Tool inventory
+      description: List every exposed tool, classify each as read/write/execute/admin/external-send, and describe side effects.
+      placeholder: |
+        | Tool | Class | Inputs | Outputs | Side effects |
+        | --- | --- | --- | --- | --- |
+    validations:
+      required: true
+  - type: textarea
+    id: data-boundary
+    attributes:
+      label: Data boundary
+      description: Allowed sources, allowed sinks, data classification, and disallowed data.
+    validations:
+      required: true
+  - type: textarea
+    id: auth
+    attributes:
+      label: Authentication and authorization
+      description: Auth model, scopes/permissions, token storage, token rotation, and resource/audience validation.
+    validations:
+      required: true
+  - type: textarea
+    id: logging
+    attributes:
+      label: Logging and monitoring
+      description: What logs show user, server, tool, target resource, read/write class, result, and correlation ID?
+    validations:
+      required: true
+  - type: checkboxes
+    id: minimum-controls
+    attributes:
+      label: Minimum controls
+      options:
+        - label: Owner and support path identified
+          required: true
+        - label: Version or digest pinned
+          required: true
+        - label: Tool list reviewed
+          required: true
+        - label: Credentials are least-privilege
+          required: true
+        - label: Logs are available to security
+          required: true
+        - label: Prompt-injection and cross-tool exfiltration abuse cases considered
+          required: true
+        - label: Expiration/review date defined
+          required: true
+  - type: textarea
+    id: exception
+    attributes:
+      label: Exception details, if any
+      description: Explain any request for write-capable tools, local stdio, broad scopes, third-party hosting, or sensitive data.
