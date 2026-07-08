@@ -1,0 +1,104 @@
+name: Copilot / Agent Pilot
+about: Request a controlled pilot for Copilot agent mode, cloud agent, or MCP-enabled workflows
+title: "Agent pilot: <team or repo>"
+labels: ["agent-pilot", "security-review"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form for controlled pilots of VS Code agent mode, Visual Studio agent mode, Copilot cloud/coding agent, or MCP-enabled workflows.
+  - type: input
+    id: requestor
+    attributes:
+      label: Requestor
+    validations:
+      required: true
+  - type: input
+    id: business-owner
+    attributes:
+      label: Business owner
+    validations:
+      required: true
+  - type: dropdown
+    id: capability-class
+    attributes:
+      label: Capability class
+      multiple: true
+      options:
+        - Standard Copilot Chat / Ask
+        - Copilot Chat Edit
+        - VS Code agent mode
+        - Visual Studio agent mode
+        - Copilot cloud/coding agent
+        - Terminal command execution
+        - Browser/fetch/web tools
+        - GitHub MCP Server read-only
+        - GitHub MCP Server write-capable
+        - Internal MCP server
+        - Third-party MCP server
+        - Local stdio MCP server
+        - Preview/beta model or feature
+    validations:
+      required: true
+  - type: textarea
+    id: purpose
+    attributes:
+      label: Business purpose
+      description: What problem does the pilot solve and why are lower-risk modes insufficient?
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope
+      description: Users, groups, repositories, IDE/client, devices, and data classification.
+      placeholder: |
+        Users/groups:
+        Repositories:
+        IDE/client:
+        Managed devices only: yes/no
+        Data classification:
+    validations:
+      required: true
+  - type: checkboxes
+    id: required-controls
+    attributes:
+      label: Required controls
+      options:
+        - label: Enterprise-managed Copilot identity is used
+          required: true
+        - label: Repositories are tiered and approved for pilot use
+          required: true
+        - label: Branch protection/rulesets are enforced
+          required: true
+        - label: Required review and status checks are enforced
+          required: true
+        - label: Global auto-approval is disabled
+          required: true
+        - label: Terminal auto-approval is disabled or narrowly scoped
+          required: true
+        - label: MCP is disabled or restricted to an approved registry/allowlist
+          required: true
+        - label: Logs are available to security for pilot activity
+          required: true
+        - label: Rollback and incident response owners are identified
+          required: true
+  - type: textarea
+    id: telemetry
+    attributes:
+      label: Monitoring and evidence
+      description: List GitHub audit/activity, IDE telemetry, EDR, proxy/DLP, MCP logs, and SIEM sources available for the pilot.
+    validations:
+      required: true
+  - type: textarea
+    id: validation
+    attributes:
+      label: Red-team validation
+      description: Which validation scenarios have been completed or are required before the pilot starts?
+    validations:
+      required: true
+  - type: textarea
+    id: risks
+    attributes:
+      label: Residual risks and exceptions
+      description: Document requested exceptions, known gaps, and the accountable risk owner.
